@@ -1,0 +1,176 @@
+{
+    "StartNodeId": "6b0faa66a21f465a9cdce5c5bf550480",
+    "Nodes": [
+        {
+            "NodeId": "6b0faa66a21f465a9cdce5c5bf550480",
+            "NodeType": 0,
+            "SpeakerId": "narrateur",
+            "Text": [
+                "il était une fois un petit caillou"
+            ],
+            "Choices": [
+                {
+                    "ChoiceId": "426cdf0e3c8f4181a2b4324af47180a6",
+                    "ChoiceText": "1A",
+                    "Events": [],
+                    "NextNodeId": "c751bc453c5e493faf5d19b25a9d4514",
+                    "AvailabilityConditions": []
+                },
+                {
+                    "ChoiceId": "29ec8c5afb974e5a9f53ad5df042efa4",
+                    "ChoiceText": "1B",
+                    "Events": [],
+                    "NextNodeId": "16cd86f28fd84361bc766dd517c10c5e",
+                    "AvailabilityConditions": []
+                }
+            ],
+            "PosX": -20.11115264892578,
+            "PosY": -4.833306312561035
+        },
+        {
+            "NodeId": "c751bc453c5e493faf5d19b25a9d4514",
+            "NodeType": 0,
+            "SpeakerId": "NPC",
+            "Text": [
+                "Une explosion retentit"
+            ],
+            "Choices": [
+                {
+                    "ChoiceId": "0c6cad0b9b624974b01938c4e5ed9c9d",
+                    "ChoiceText": "2A",
+                    "Events": [],
+                    "NextNodeId": "c4278cb6b1194cbf91d2531766a03f6e",
+                    "AvailabilityConditions": []
+                }
+            ],
+            "PosX": -384.55560302734377,
+            "PosY": -378.1666564941406
+        },
+        {
+            "NodeId": "16cd86f28fd84361bc766dd517c10c5e",
+            "NodeType": 0,
+            "SpeakerId": "NPC",
+            "Text": [
+                "Rayan arrive nue a l'aéroport"
+            ],
+            "Choices": [
+                {
+                    "ChoiceId": "d82814e97cb94d86b832a8171d84edd8",
+                    "ChoiceText": "3A",
+                    "Events": [],
+                    "NextNodeId": "9cd97fc70ab443bcb2e72baf067750c8",
+                    "AvailabilityConditions": []
+                },
+                {
+                    "ChoiceId": "a2ec0c3ce0b74122b9df4a288c5c2999",
+                    "ChoiceText": "3B",
+                    "Events": [],
+                    "NextNodeId": "9a6f34c19a9b4133a31feeb2ef13aa98",
+                    "AvailabilityConditions": []
+                }
+            ],
+            "PosX": 203.22219848632813,
+            "PosY": -319.83331298828127
+        },
+        {
+            "NodeId": "c4278cb6b1194cbf91d2531766a03f6e",
+            "NodeType": 0,
+            "SpeakerId": "NPC",
+            "Text": [
+                "noooo"
+            ],
+            "Choices": [],
+            "PosX": -414.55560302734377,
+            "PosY": -772.6111450195313
+        },
+        {
+            "NodeId": "9cd97fc70ab443bcb2e72baf067750c8",
+            "NodeType": 0,
+            "SpeakerId": "NPC",
+            "Text": [
+                "il se fait gaullé"
+            ],
+            "Choices": [],
+            "PosX": 86.55552673339844,
+            "PosY": -745.9444580078125
+        },
+        {
+            "NodeId": "9a6f34c19a9b4133a31feeb2ef13aa98",
+            "NodeType": 0,
+            "SpeakerId": "NPC",
+            "Text": [
+                "il explose"
+            ],
+            "Choices": [],
+            "PosX": 614.3333129882813,
+            "PosY": -748.1666870117188
+        },
+        {
+            "NodeId": "6dbc7f8017d548fe9874283b2953337f",
+            "NodeType": 0,
+            "SpeakerId": "Maxime",
+            "Text": [
+                "il est beau"
+            ],
+            "Choices": [
+                {
+                    "ChoiceId": "9d705ff354734b178c4a5a928c6cde45",
+                    "ChoiceText": "C1",
+                    "Events": [],
+                    "NextNodeId": "87d071c62e4c4075879fdee2be2342d4",
+                    "AvailabilityConditions": []
+                },
+                {
+                    "ChoiceId": "f09c1b0df492487fa004687eb8394307",
+                    "ChoiceText": "D1",
+                    "Events": [],
+                    "NextNodeId": "352df9d71c434b5485e2add809549f3f",
+                    "AvailabilityConditions": []
+                }
+            ],
+            "PosX": 1334.0001220703125,
+            "PosY": 99.50001525878906
+        },
+        {
+            "NodeId": "87d071c62e4c4075879fdee2be2342d4",
+            "NodeType": 0,
+            "SpeakerId": "NPC",
+            "Text": [
+                "AAAA"
+            ],
+            "Choices": [
+                {
+                    "ChoiceId": "db7c402d453342b09acca739fe141d88",
+                    "ChoiceText": "C2",
+                    "Events": [],
+                    "NextNodeId": "8dfce86a34cc4cdbb3b0fc6d2bad71b5",
+                    "AvailabilityConditions": []
+                }
+            ],
+            "PosX": 1148.0001220703125,
+            "PosY": -220.00003051757813
+        },
+        {
+            "NodeId": "8dfce86a34cc4cdbb3b0fc6d2bad71b5",
+            "NodeType": 0,
+            "SpeakerId": "NPC",
+            "Text": [
+                "CCCC"
+            ],
+            "Choices": [],
+            "PosX": 1200.5001220703125,
+            "PosY": -592.5000610351563
+        },
+        {
+            "NodeId": "352df9d71c434b5485e2add809549f3f",
+            "NodeType": 0,
+            "SpeakerId": "NPC",
+            "Text": [
+                "BBBB"
+            ],
+            "Choices": [],
+            "PosX": 1703.000244140625,
+            "PosY": -247.50003051757813
+        }
+    ]
+}

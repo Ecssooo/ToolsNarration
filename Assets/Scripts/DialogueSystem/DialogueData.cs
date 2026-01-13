@@ -1,9 +1,38 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
+[Serializable]
 public class DialogueData : MonoBehaviour
 {
+    public static DialogueData Instance;
+    [SerializeField] private Graph graph;
+    public Graph Graph
+    {
+        get { return graph; }
+        set { graph = value; }
+    }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            transform.parent = null;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+}
+
+[Serializable]
+public class Graph
+{
+    public string StartNodeId;
     public List<Node> Nodes;
 }
 
