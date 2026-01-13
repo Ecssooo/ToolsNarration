@@ -1,0 +1,5 @@
+Key;French;English
+$LANG_FR;Français;French
+$LANG_EN;Anglais;English
+$HELLO;Bonjour {player}!;Hello {player}!
+$PLAY;Jouer;Play
