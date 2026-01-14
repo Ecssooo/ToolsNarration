@@ -3,14 +3,19 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] float speed;
+
+    [Header("Interaction UI")]
+    [SerializeField] GameObject pressECanvas;
+    [SerializeField] GameObject dialogueCanvas;
 
     CharacterController cc;
     PlayerInput playerInput;
     InputAction moveAction;
     InputAction interactAction;
 
-    PNJ current;
+    bool hasInteractTarget;
 
     void Awake()
     {
@@ -19,6 +24,9 @@ public class Player : MonoBehaviour
 
         moveAction = playerInput.actions["Move"];
         interactAction = playerInput.actions["Interract"];
+
+        Player_SetInteractPrompt(false);
+        Player_SetDialogue(false);
     }
 
     void OnEnable()
@@ -46,29 +54,36 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        var zone = other.GetComponent<PNJ>();
-        if (zone == null) return;
+        if (!other.TryGetComponent<PNJ>(out _)) return;
 
-        current = zone;
-        current.ShowInterract(true);
+        hasInteractTarget = true;
+        Player_SetInteractPrompt(true);
     }
 
     void OnTriggerExit(Collider other)
     {
-        var zone = other.GetComponent<PNJ>();
-        if (zone == null) return;
+        if (!other.TryGetComponent<PNJ>(out _)) return;
 
-        if (current == zone)
-        {
-            current.ShowInterract(false);
-            current.HideDialogue(false);
-            current = null;
-        }
+        hasInteractTarget = false;
+        Player_SetInteractPrompt(false);
+        Player_SetDialogue(false);
     }
 
     void OnInteract(InputAction.CallbackContext ctx)
     {
-        if (current == null) return;
-        current.DoInteract();
+        if (!hasInteractTarget) return;
+
+        Player_SetInteractPrompt(false);
+        Player_SetDialogue(true);
+    }
+
+    void Player_SetInteractPrompt(bool show)
+    {
+        if (pressECanvas != null) pressECanvas.SetActive(show);
+    }
+
+    void Player_SetDialogue(bool show)
+    {
+        if (dialogueCanvas != null) dialogueCanvas.SetActive(show);
     }
 }
