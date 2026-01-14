@@ -13,15 +13,27 @@
                     "ChoiceId": "426cdf0e3c8f4181a2b4324af47180a6",
                     "ChoiceText": "1A",
                     "Events": [
-                        "camerashake"
+                        {
+                            "Id": "ChangeBGColor",
+                            "Params": [
+                                "red"
+                            ]
+                        }
                     ],
                     "NextNodeId": "c751bc453c5e493faf5d19b25a9d4514",
-                    "AvailabilityConditions": []
+                    "AvailabilityConditions": [
+                        {}
+                    ]
                 },
                 {
                     "ChoiceId": "29ec8c5afb974e5a9f53ad5df042efa4",
                     "ChoiceText": "1B",
-                    "Events": [],
+                    "Events": [
+                        {
+                            "Id": "CameraShake",
+                            "Params": []
+                        }
+                    ],
                     "NextNodeId": "16cd86f28fd84361bc766dd517c10c5e",
                     "AvailabilityConditions": []
                 }

@@ -43,13 +43,27 @@ public class VisualisedDialogue : MonoBehaviour
             if (tmp != null) tmp.text = choiceData.ChoiceText;
 
             string nextId = choiceData.NextNodeId;
-            btn.onClick.AddListener(() => OnChoiceSelected(nextId));
+            btn.onClick.AddListener(() =>
+            {
+                TriggerEvents(choiceData);
+                OnChoiceSelected(nextId);
+            });
         }
     }
 
     private void OnChoiceSelected(string nextNodeId)
     {
         UpdateUI(nextNodeId);
+    }
+
+    private void TriggerEvents(Choices choice)
+    {
+        if (choice.Events == null) return;
+
+        foreach (var dialogueEvent in choice.Events)
+        {
+            DialogueEventRunner.Instance.TriggerEvent(dialogueEvent.Id);
+        }
     }
 
     private void ClearChoices()
