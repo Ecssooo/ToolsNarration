@@ -13,9 +13,15 @@ MonoBehaviour:
   m_Name: SavableDatas
   m_EditorClassIdentifier: Assembly-CSharp::SaveSystem.SavableDatas
   savableFields:
-  - className: Player
-    fieldName: ID
+  - className: SaveTest
+    fieldName: Int
     isSavable: 1
-  - className: Player
+  - className: SaveTest
+    fieldName: Float
+    isSavable: 1
+  - className: SaveTest
+    fieldName: String
+    isSavable: 1
+  - className: SaveTest
     fieldName: Struct
     isSavable: 1

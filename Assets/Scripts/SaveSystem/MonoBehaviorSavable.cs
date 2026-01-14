@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json.Linq;
@@ -85,6 +86,10 @@ namespace SaveSystem
                 if (value is JObject jObject)
                 {
                     value = jObject.ToObject(info.FieldType);
+                }
+                else
+                {
+                    value = Convert.ChangeType(value, info.FieldType);
                 }
                 info.SetValue(this, value);
             }
