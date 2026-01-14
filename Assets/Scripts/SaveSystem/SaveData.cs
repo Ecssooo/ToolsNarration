@@ -12,7 +12,7 @@ namespace SaveSystem
 
 
     [Serializable]
-    public struct SavableField
+    public class SavableField
     {
         public string className;
         public string fieldName;

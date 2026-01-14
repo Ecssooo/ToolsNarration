@@ -17,6 +17,8 @@ namespace SaveSystem
             var result = new List<MethodInfo>();
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
 
+            savableFields.Clear();
+            
             foreach (var asm in assemblies)
             {
                 Type[] types;
@@ -63,7 +65,7 @@ namespace SaveSystem
                 else continue;
             }
 
-            field = new SavableField();
+            field = null;
             return false;
         }
 
