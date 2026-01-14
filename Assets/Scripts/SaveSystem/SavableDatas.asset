@@ -15,7 +15,7 @@ MonoBehaviour:
   savableFields:
   - className: SaveTest
     fieldName: Int
-    isSavable: 1
+    isSavable: 0
   - className: SaveTest
     fieldName: Float
     isSavable: 1

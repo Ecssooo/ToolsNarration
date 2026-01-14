@@ -66,5 +66,25 @@ namespace SaveSystem
             field = new SavableField();
             return false;
         }
+
+        public Dictionary<string, List<SavableField>> SplitByClassName(List<SavableField> fields)
+        {
+            Dictionary<string, List<SavableField>> result = new Dictionary<string, List<SavableField>>();
+
+            foreach (var field in fields)
+            {
+                if (result.ContainsKey(field.className))
+                {
+                    result[field.className].Add(field);
+                }
+                else
+                {
+                    var list = new List<SavableField>();
+                    list.Add(field);
+                    result.Add(field.className,list);
+                }
+            }
+            return result;
+        }
     }
 }
