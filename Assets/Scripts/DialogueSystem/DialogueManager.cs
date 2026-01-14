@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
@@ -26,8 +27,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-
-    [ContextMenu("Load Dialogue Data from JSON")]
+    [Button("LoadDialogue")]
     public void LoadDialogueDataFromJson()
     {
         graph = JsonManager.JsonToDialogueData(dialogueJsonFile.text);
