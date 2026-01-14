@@ -6,7 +6,7 @@ public class DialogueManager : MonoBehaviour
 
 
     [ContextMenu("Load Dialogue Data from JSON")]
-    private void LoadDialogueDataFromJson()
+    public void LoadDialogueDataFromJson()
     {
         DialogueData dialogueData = DialogueData.Instance;
         if (dialogueData != null)

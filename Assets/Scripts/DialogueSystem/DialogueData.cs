@@ -14,6 +14,19 @@ public class DialogueData : MonoBehaviour
         set { graph = value; }
     }
 
+    public Node GetNodeByID(string id)
+    {
+        foreach (Node node in graph.Nodes)
+        {
+            if (node.NodeId == id)
+            {
+                return node;
+            }
+        }
+
+        return null;
+    }
+    
     private void Awake()
     {
         if (Instance == null)
