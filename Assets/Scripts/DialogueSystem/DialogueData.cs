@@ -41,5 +41,5 @@ public class Choices
 public class DialogueEvent
 {
     public string Id;
-    public List<string> Parameters;
+    public List<string> Params;
 }

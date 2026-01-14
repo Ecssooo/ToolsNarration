@@ -7,18 +7,27 @@ public class TestAttributeEvent : MonoBehaviour
     [SerializeField] private Image bgImage;
     [SerializeField] private Camera mainCamera;
 
-    public void ChangeBackgroundColor(Color newColor)
+    [DialogueEvent]
+    public void ChangeBackgroundColor(string newColor)
     {
         if (bgImage != null)
         {
-            bgImage.color = newColor;
+            Color color;
+            if (ColorUtility.TryParseHtmlString(newColor, out color))
+            {
+                bgImage.color = color;
+            }
+            else
+            {
+                Debug.LogWarning("Invalid color string: " + newColor);
+            }
         }
     }
 
     [DialogueEvent]
     public void ChangeBackgroundColorToRed()
     {
-        ChangeBackgroundColor(Color.red);
+        ChangeBackgroundColor("red");
     }
 
     [DialogueEvent]

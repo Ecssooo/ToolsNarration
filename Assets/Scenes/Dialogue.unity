@@ -334,7 +334,8 @@ MonoBehaviour:
         ChoiceText: 1A
         Events:
         - Id: ChangeBGColor
-          Parameters: []
+          Params:
+          - blue
         NextNodeId: c751bc453c5e493faf5d19b25a9d4514
         AvailabilityConditions:
         - 
@@ -342,7 +343,7 @@ MonoBehaviour:
         ChoiceText: 1B
         Events:
         - Id: CameraShake
-          Parameters: []
+          Params: []
         NextNodeId: 16cd86f28fd84361bc766dd517c10c5e
         AvailabilityConditions: []
     - NodeId: c751bc453c5e493faf5d19b25a9d4514

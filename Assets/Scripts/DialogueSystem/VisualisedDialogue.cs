@@ -62,7 +62,7 @@ public class VisualisedDialogue : MonoBehaviour
 
         foreach (var dialogueEvent in choice.Events)
         {
-            DialogueEventRunner.Instance.TriggerEvent(dialogueEvent.Id);
+            DialogueEventRunner.Instance.TriggerEvent(dialogueEvent);
         }
     }
 

@@ -55,21 +55,27 @@ public class DialogueEventRunner : MonoBehaviour
         }
     }
 
-    public void TriggerEvent(string eventId)
+    public void TriggerEvent(DialogueEvent ev)
     {
-        if (!eventMap.TryGetValue(eventId, out var method))
+        if (!eventMap.TryGetValue(ev.Id, out var method))
         {
-            Debug.LogWarning($"Aucun binding pour l'event '{eventId}'");
+            Debug.LogWarning($"Unknown event: {ev.Id}");
             return;
         }
 
         object instance = null;
         if (!method.IsStatic)
-        {
-            // Ici tu peux améliorer : FindObjectOfType, référence explicite, etc.
             instance = FindAnyObjectByType(method.DeclaringType);
+
+        ParameterInfo[] parameters = method.GetParameters();
+
+        object[] parsedParams = new object[parameters.Length];
+
+        for (int i = 0; i < parameters.Length; i++)
+        {
+            parsedParams[i] = Convert.ChangeType(ev.Params[i], parameters[i].ParameterType);
         }
 
-        method.Invoke(instance, null);
+        method.Invoke(instance, parsedParams);
     }
 }

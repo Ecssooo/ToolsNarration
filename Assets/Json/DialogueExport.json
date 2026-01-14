@@ -16,7 +16,7 @@
                         {
                             "Id": "ChangeBGColor",
                             "Params": [
-                                "red"
+                                "blue"
                             ]
                         }
                     ],

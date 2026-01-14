@@ -165,26 +165,54 @@ public class DialogueSettingsWindow : EditorWindow
             return;
         }
 
+        // Options du popup : 0 = <None>, puis tous les eventIds
+        string[] popupOptions;
+        if (jsonEventIds != null && jsonEventIds.Length > 0)
+        {
+            popupOptions = new string[jsonEventIds.Length + 1];
+            popupOptions[0] = "<None>";
+            Array.Copy(jsonEventIds, 0, popupOptions, 1, jsonEventIds.Length);
+        }
+        else
+        {
+            popupOptions = new[] { "<None>" };
+        }
+
         // Trouver binding existant (si déjà mappé)
         var fullTypeName = method.DeclaringType.AssemblyQualifiedName;
-
         var binding = config.bindings.FirstOrDefault(b => b.typeName == fullTypeName && b.methodName == method.Name);
 
+        // Index courant dans le popup
+        int currentIndex = 0; // 0 = <None> par défaut
 
-        int currentIndex = -1;
         if (binding != null && jsonEventIds.Length > 0)
         {
-            currentIndex = Array.IndexOf(jsonEventIds, binding.eventId);
+            int idx = Array.IndexOf(jsonEventIds, binding.eventId);
+            if (idx >= 0)
+            {
+                currentIndex = idx + 1; // +1 car 0 = <None>
+            }
         }
 
         // Popup
-        int newIndex = EditorGUILayout.Popup(currentIndex, jsonEventIds);
+        int newIndex = EditorGUILayout.Popup(currentIndex, popupOptions);
 
         // S’il change, on maj le binding
         if (newIndex != currentIndex)
         {
-            if (newIndex >= 0 && newIndex < jsonEventIds.Length)
+            if (newIndex == 0)
             {
+                // <None> → on supprime le binding s'il existe
+                if (binding != null)
+                {
+                    config.bindings.Remove(binding);
+                }
+            }
+            else
+            {
+                // newIndex > 0 → correspond à jsonEventIds[newIndex - 1]
+                string selectedEventId = jsonEventIds[newIndex - 1];
+
                 if (binding == null)
                 {
                     binding = new DialogueEventConfig.Binding
@@ -195,15 +223,13 @@ public class DialogueSettingsWindow : EditorWindow
                     config.bindings.Add(binding);
                 }
 
-                binding.eventId = jsonEventIds[newIndex];
+                binding.eventId = selectedEventId;
             }
-            else if (binding != null)
-            {
-                // -1 → retiré
-                config.bindings.Remove(binding);
-            }
+
+            EditorUtility.SetDirty(config);
         }
 
         EditorGUILayout.EndHorizontal();
     }
+
 }

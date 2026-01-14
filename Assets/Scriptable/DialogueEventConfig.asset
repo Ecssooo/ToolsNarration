@@ -12,4 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2975009828d734cba223a4766016f4, type: 3}
   m_Name: DialogueEventConfig
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEventConfig
-  bindings: []
+  bindings:
+  - eventId: CameraShake
+    typeName: TestAttributeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    methodName: CameraShake
+  - eventId: ChangeBGColor
+    typeName: TestAttributeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    methodName: ChangeBackgroundColor
