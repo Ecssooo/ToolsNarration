@@ -12,7 +12,9 @@
                 {
                     "ChoiceId": "426cdf0e3c8f4181a2b4324af47180a6",
                     "ChoiceText": "1A",
-                    "Events": [],
+                    "Events": [
+                        "camerashake"
+                    ],
                     "NextNodeId": "c751bc453c5e493faf5d19b25a9d4514",
                     "AvailabilityConditions": []
                 },

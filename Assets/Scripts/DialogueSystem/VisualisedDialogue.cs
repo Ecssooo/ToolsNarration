@@ -14,13 +14,13 @@ public class VisualisedDialogue : MonoBehaviour
 
     public void StartDialogue()
     {
-        currentNodeId = DialogueData.Instance.Graph.StartNodeId;
+        currentNodeId = DialogueManager.Instance.Graph.StartNodeId;
         UpdateUI(currentNodeId);
     }
 
     private void UpdateUI(string nodeId)
     {
-        Node node = DialogueData.Instance.GetNodeByID(nodeId);
+        Node node = DialogueManager.Instance.GetNodeByID(nodeId);
         currentNodeId = node.NodeId;
 
         speakerText.text = node.SpeakerId;

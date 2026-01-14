@@ -6,40 +6,7 @@ using UnityEngine;
 [Serializable]
 public class DialogueData : MonoBehaviour
 {
-    public static DialogueData Instance;
-    [SerializeField] private Graph graph;
-    public Graph Graph
-    {
-        get { return graph; }
-        set { graph = value; }
-    }
 
-    public Node GetNodeByID(string id)
-    {
-        foreach (Node node in graph.Nodes)
-        {
-            if (node.NodeId == id)
-            {
-                return node;
-            }
-        }
-
-        return null;
-    }
-    
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            transform.parent = null;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 }
 
 [Serializable]

@@ -2,21 +2,52 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
+    public static DialogueManager Instance { get; private set; }
     [SerializeField] private TextAsset dialogueJsonFile;
+
+    [SerializeField] private Graph graph;
+    public Graph Graph
+    {
+        get { return graph; }
+        set { graph = value; }
+    }
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            transform.parent = null;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
 
     [ContextMenu("Load Dialogue Data from JSON")]
     public void LoadDialogueDataFromJson()
     {
-        DialogueData dialogueData = DialogueData.Instance;
-        if (dialogueData != null)
+        graph = JsonManager.JsonToDialogueData(dialogueJsonFile.text);
+    }
+
+    public Node GetNodeByID(string id)
+    {
+        foreach (Node node in graph.Nodes)
         {
-            dialogueData.Graph = JsonManager.JsonToDialogueData(dialogueJsonFile.text);
-            Debug.Log("Dialogue Data loaded from JSON.");
+            if (node.NodeId == id)
+            {
+                return node;
+            }
         }
-        else
-        {
-            Debug.LogWarning("Dialogue Data instance already exists. Loading from JSON skipped.");
-        }
+
+        return null;
+    }
+
+    public static Graph JsonToDialogueData(string jsonString)
+    {
+        return JsonUtility.FromJson<Graph>(jsonString);
     }
 }
