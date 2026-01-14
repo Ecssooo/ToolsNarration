@@ -32,7 +32,14 @@ public class Choices
 {
     public string ChoiceId;
     public string ChoiceText;
-    public List<string> Events;
+    public List<DialogueEvent> Events;
     public string NextNodeId;
     public List<string> AvailabilityConditions;
+}
+
+[Serializable]
+public class DialogueEvent
+{
+    public string Id;
+    public List<string> Params;
 }
