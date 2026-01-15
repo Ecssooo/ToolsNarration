@@ -31,7 +31,7 @@ public class DialogueEventRunner : MonoBehaviour
     {
         eventMap.Clear();
 
-        foreach (var b in config.bindings)
+        foreach (var b in config.eventsBindings)
         {
             var type = Type.GetType(b.typeName);
             if (type == null)

@@ -6,12 +6,21 @@ using System.Collections.Generic;
 public class DialogueEventConfig : ScriptableObject
 {
     [Serializable]
-    public class Binding
+    public class BindingEvent
     {
         public string eventId;      // string du JSON (ex: "ChangeBGColor")
         public string typeName;     // type complet (ex: "MyGame.GameEvents")
         public string methodName;   // nom de la méthode (ex: "ChangeBackgroundColor")
     }
 
-    public List<Binding> bindings = new List<Binding>();
+    [Serializable]
+    public class BindingCondition
+    {
+        public string eventId;      // string du JSON (ex: "IsPlayerHealthy")
+        public string typeName;     // type complet (ex: "MyGame.GameConditions")
+        public string fieldName;   // nom de la field (ex: "CheckPlayerHealth")
+    }
+
+    public List<BindingEvent> eventsBindings = new List<BindingEvent>();
+    public List<BindingCondition> conditionBindings = new List<BindingCondition>();
 }
