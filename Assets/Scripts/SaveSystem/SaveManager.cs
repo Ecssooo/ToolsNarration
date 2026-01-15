@@ -13,9 +13,16 @@ namespace SaveSystem
         public SaveData SaveData { get => _saveData; set => _saveData = value; }
 
         [field: SerializeField] public SavableDatas SavableDatas { get; set; } 
-        
+        public int NumberOfMonoBehaviorSavable { get; set; }
+
+        private void Start()
+        {
+            OnSavableInit?.Invoke();
+        }
+
         public Action OnSave;
         public Action OnLoad;
+        public Action OnSavableInit;
         
         public void SaveGame()
         {

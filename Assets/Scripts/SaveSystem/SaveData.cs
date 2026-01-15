@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
+using Attributes.NonSerializedField;
 
 namespace SaveSystem
 {
@@ -14,8 +14,8 @@ namespace SaveSystem
     [Serializable]
     public class SavableField
     {
-        public string className;
-        public string fieldName;
+        [NonSerializedField] public string className;
+        [NonSerializedField] public string fieldName;
         public bool isSavable;
 
         public SavableField(string className, string fieldName, bool isSavable)

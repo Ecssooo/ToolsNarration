@@ -258,6 +258,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128412745}
   m_CullTransparentMesh: 1
+--- !u!1 &178097542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 178097544}
+  - component: {fileID: 178097543}
+  m_Layer: 0
+  m_Name: ShowIfDemo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &178097543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178097542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af19e48de444bd44b9a6e0cc101e180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Attributes.ShowIf.ShowIfDemo
+  _showIf: 0
+  _showIfString: 
+  _readonly: 
+--- !u!4 &178097544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178097542}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.22258, y: 0, z: -6.09613}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &250802052
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,11 +981,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveSystem.SaveTest
   _saveID: 0
-  _int: 1
-  _float: 1
+  _int: 0
+  _float: -3.06
   _string: hgiah
   _saveTest:
-    _int: 1
+    _int: 0
     _float: 1
     _string: papop
 --- !u!1 &1674763509
@@ -1457,3 +1504,4 @@ SceneRoots:
   - {fileID: 1635871713}
   - {fileID: 1674763513}
   - {fileID: 900815681}
+  - {fileID: 178097544}

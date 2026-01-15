@@ -24,8 +24,15 @@ namespace SaveSystem
 
             SaveManager.OnSave += Save;
             SaveManager.OnLoad += Load;
+            SaveManager.OnSavableInit += SavableInit;
         }
 
+        protected void SavableInit()
+        {
+            SaveManager.NumberOfMonoBehaviorSavable++;
+            _saveID = SaveManager.NumberOfMonoBehaviorSavable;
+        }
+        
         protected void Save()
         {
             var fieldInfos = this.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).Where(field => field.GetCustomAttribute<SaveFieldAttributes>() != null);
@@ -66,7 +73,7 @@ namespace SaveSystem
         {
             var fieldInfos = this.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).Where(field => field.GetCustomAttribute<SaveFieldAttributes>() != null);
             
-            string className = "";
+            string className = ""; 
             string fieldName = "";
             
             foreach (var info in fieldInfos)
@@ -88,6 +95,7 @@ namespace SaveSystem
                 
                 string key = $"{className}.{fieldName}.{_saveID}";
 
+                if(!SaveManager.SaveData.DatasToSave.ContainsKey(key)) continue;
                 object value = SaveManager.SaveData.DatasToSave[key];
                 if (value is JObject jObject)
                 {
