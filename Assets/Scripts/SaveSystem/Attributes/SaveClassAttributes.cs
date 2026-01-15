@@ -7,11 +7,9 @@ namespace SaveSystem
     public class SaveClassAttributes : PropertyAttribute
     {
         
-        public string ClassName { get; set; }
         
-        public SaveClassAttributes(string className) : base(true)
+        public SaveClassAttributes() : base(true)
         {
-            ClassName = className;
         }
     }
 }

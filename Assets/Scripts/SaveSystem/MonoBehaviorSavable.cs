@@ -35,18 +35,21 @@ namespace SaveSystem
             
             foreach (var info in fieldInfos)
             {
-                var classAttribute = this.GetType().GetCustomAttribute<SaveClassAttributes>();
-                if (classAttribute != null)
-                {
-                    className = classAttribute.ClassName;
-                }
+                // var classAttribute = this.GetType().GetCustomAttribute<SaveClassAttributes>();
+                // if (classAttribute != null)
+                // {
+                //     className = classAttribute.ClassName;
+                // }
+                //
+                // var fieldAttribute = info.GetCustomAttribute<SaveFieldAttributes>();
+                // if (fieldAttribute != null)
+                // {
+                //     fieldName = fieldAttribute.FieldName;
+                // }
 
-                var fieldAttribute = info.GetCustomAttribute<SaveFieldAttributes>();
-                if (fieldAttribute != null)
-                {
-                    fieldName = fieldAttribute.FieldName;
-                }
-
+                className = this.GetType().ToString();
+                fieldName = info.Name;
+                
                 if (SaveManager.SavableDatas.FindFieldInfo(className, fieldName, out var field))
                 {
                     if (field.isSavable)
@@ -68,18 +71,21 @@ namespace SaveSystem
             
             foreach (var info in fieldInfos)
             {
-                var classAttribute = this.GetType().GetCustomAttribute<SaveClassAttributes>();
-                if (classAttribute != null)
-                {
-                    className = classAttribute.ClassName;
-                }
+                // var classAttribute = this.GetType().GetCustomAttribute<SaveClassAttributes>();
+                // if (classAttribute != null)
+                // {
+                //     className = classAttribute.ClassName;
+                // }
+                //
+                // var fieldAttribute = info.GetCustomAttribute<SaveFieldAttributes>();
+                // if (fieldAttribute != null)
+                // {
+                //     fieldName = fieldAttribute.FieldName;
+                // }
 
-                var fieldAttribute = info.GetCustomAttribute<SaveFieldAttributes>();
-                if (fieldAttribute != null)
-                {
-                    fieldName = fieldAttribute.FieldName;
-                }
-
+                className = this.GetType().ToString();
+                fieldName = info.Name;
+                
                 string key = $"{className}.{fieldName}.{_saveID}";
 
                 object value = SaveManager.SaveData.DatasToSave[key];

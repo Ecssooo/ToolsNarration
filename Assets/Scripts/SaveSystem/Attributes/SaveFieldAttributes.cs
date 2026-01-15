@@ -6,11 +6,8 @@ namespace SaveSystem.Attributes
     [AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = false)]
     public class SaveFieldAttributes : PropertyAttribute
     {
-        
-        public string FieldName { get; set; }
-        public SaveFieldAttributes(string fieldName) : base(true)
+        public SaveFieldAttributes() : base(true)
         {
-            FieldName = fieldName;
         }
     }
 }

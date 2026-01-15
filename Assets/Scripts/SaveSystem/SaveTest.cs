@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace SaveSystem
 {
-    [SaveClassAttributes("SaveTest")]
+    [SaveClassAttributes]
     public class SaveTest : MonoBehaviorSavable
     {
-        [SerializeField, SaveFieldAttributes("Int")] private int _int;
-        [SerializeField, SaveFieldAttributes("Float")] private float _float;
-        [SerializeField, SaveFieldAttributes("String")] private string _string;
-        [SerializeField, SaveFieldAttributes("Struct")] private StructSaveTest _saveTest;
+        [SerializeField, SaveFieldAttributes] private int _int;
+        [SerializeField, SaveFieldAttributes] private float _float;
+        [SerializeField, SaveFieldAttributes] private string _string;
+        [SerializeField, SaveFieldAttributes] private StructSaveTest _saveTest;
     }
 
     [Serializable]

@@ -30,11 +30,13 @@ namespace SaveSystem
                 {
                     var fieldInfos = type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).Where(field => field.GetCustomAttribute<SaveFieldAttributes>() != null);
                     
-                    var className = type.GetCustomAttribute<SaveClassAttributes>()?.ClassName;
-
+                    //var className = type.GetCustomAttribute<SaveClassAttributes>()?.ClassName;
+                    var className = type.ToString();
+                    
                     foreach (var info in fieldInfos)
                     {
-                        var fieldName = info.GetCustomAttribute<SaveFieldAttributes>().FieldName;
+                        // var fieldName = info.GetCustomAttribute<SaveFieldAttributes>().FieldName;
+                        var fieldName = info.Name;
                         var savableField = new SavableField(className, fieldName, true);
                         if (FindFieldInfo(className, fieldName, out SavableField field))
                         {
