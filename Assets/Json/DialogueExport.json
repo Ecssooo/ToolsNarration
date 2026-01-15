@@ -21,9 +21,7 @@
                         }
                     ],
                     "NextNodeId": "c751bc453c5e493faf5d19b25a9d4514",
-                    "AvailabilityConditions": [
-                        {}
-                    ]
+                    "AvailabilityConditions": []
                 },
                 {
                     "ChoiceId": "29ec8c5afb974e5a9f53ad5df042efa4",
@@ -35,7 +33,9 @@
                         }
                     ],
                     "NextNodeId": "16cd86f28fd84361bc766dd517c10c5e",
-                    "AvailabilityConditions": []
+                    "AvailabilityConditions": [
+                        "Checktest"
+                    ]
                 }
             ],
             "PosX": -20.11115264892578,

@@ -393,6 +393,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEventRunner
   config: {fileID: 11400000, guid: e63d1f546be54a24ca1a85ab10702a4f, type: 2}
+--- !u!1 &256097719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 256097720}
+  - component: {fileID: 256097721}
+  m_Layer: 0
+  m_Name: DialogueConditionRunner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &256097720
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256097719}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -969.20306, y: 0.000050000002, z: -10927.897}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 969224052}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &256097721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256097719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbed3fabe337fc343af0ad74b15cd5f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueConditionRunner
+  config: {fileID: 11400000, guid: e63d1f546be54a24ca1a85ab10702a4f, type: 2}
 --- !u!1 &346154079
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,15 +609,15 @@ MonoBehaviour:
           Params:
           - blue
         NextNodeId: c751bc453c5e493faf5d19b25a9d4514
-        AvailabilityConditions:
-        - 
+        AvailabilityConditions: []
       - ChoiceId: 29ec8c5afb974e5a9f53ad5df042efa4
         ChoiceText: 1B
         Events:
         - Id: CameraShake
           Params: []
         NextNodeId: 16cd86f28fd84361bc766dd517c10c5e
-        AvailabilityConditions: []
+        AvailabilityConditions:
+        - Checktest
     - NodeId: c751bc453c5e493faf5d19b25a9d4514
       NodeType: 0
       SpeakerId: NPC
@@ -1119,6 +1164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TestAttributeEvent
   bgImage: {fileID: 1395427016}
   mainCamera: {fileID: 737680075}
+  isTest: 0
 --- !u!4 &895968729
 Transform:
   m_ObjectHideFlags: 0
@@ -1428,6 +1474,7 @@ Transform:
   m_Children:
   - {fileID: 423399455}
   - {fileID: 124139006}
+  - {fileID: 256097720}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &989643377
@@ -2141,6 +2188,7 @@ MonoBehaviour:
   dialogueText: {fileID: 870707392}
   choicesContent: {fileID: 989643378}
   choiceButtonPrefab: {fileID: 5132044784837588840, guid: bf72d19213b2da74fb7913d1592c0133, type: 3}
+  isTestCondition: 0
 --- !u!4 &1866834364
 Transform:
   m_ObjectHideFlags: 0

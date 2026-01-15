@@ -6,6 +6,7 @@ public class TestAttributeEvent : MonoBehaviour
 {
     [SerializeField] private Image bgImage;
     [SerializeField] private Camera mainCamera;
+    [DialogueCondition] public bool isTest;
 
     [DialogueEvent]
     public void ChangeBackgroundColor(string newColor)

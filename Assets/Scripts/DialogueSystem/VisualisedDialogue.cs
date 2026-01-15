@@ -10,6 +10,8 @@ public class VisualisedDialogue : MonoBehaviour
     [SerializeField] private RectTransform choicesContent;
     [SerializeField] private Button choiceButtonPrefab;
 
+    [DialogueCondition, SerializeField] private bool isTestCondition;
+
     private string currentNodeId;
 
     public void StartDialogue()
@@ -37,6 +39,17 @@ public class VisualisedDialogue : MonoBehaviour
         for (int i = 0; i < node.Choices.Count; i++)
         {
             var choiceData = node.Choices[i];
+            bool isAvailable = true;
+            for (int j = 0; j < choiceData.AvailabilityConditions.Count; j++)
+            {
+                var conditionId = choiceData.AvailabilityConditions[j];
+                if (!DialogueConditionRunner.Instance.EvaluateCondition(conditionId))
+                {
+                    isAvailable = false;
+                    break;
+                }
+            }
+            if (!isAvailable) continue;
             var btn = Instantiate(choiceButtonPrefab, choicesContent);
 
             var tmp = btn.GetComponentInChildren<TextMeshProUGUI>();
