@@ -44,7 +44,7 @@ namespace SaveSystem.Editor
             EditorGUILayout.Space(10);
             
             if (_splitFields == null) return;
-            DisplayField();
+            DisplayField(); 
             
         }
 
@@ -56,13 +56,13 @@ namespace SaveSystem.Editor
                 EditorGUILayout.LabelField(splitField.Key, EditorStyles.boldLabel);
                 foreach (var field in splitField.Value)
                 {
-                    EditorGUILayout.BeginHorizontal();
+                    EditorGUILayout.BeginHorizontal(EditorStyles.helpBox, GUILayout.MaxWidth(position.width / 1.05f));
                     EditorGUI.indentLevel++;
-                    EditorGUILayout.LabelField(field.fieldName);
+                    // EditorGUILayout.LabelField(field.fieldName);
                     EditorGUILayout.Space(-50);
                     if(_savableDatas.FindFieldInfo(field.className, field.fieldName, out var savableField))
                     {
-                        savableField.isSavable = EditorGUILayout.Toggle(savableField.isSavable);
+                        savableField.isSavable = EditorGUILayout.Toggle(field.fieldName, savableField.isSavable);
                     }
                     EditorGUI.indentLevel--;
                     EditorGUILayout.EndHorizontal();
