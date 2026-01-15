@@ -50,4 +50,10 @@ public class DialogueManager : MonoBehaviour
     {
         return JsonUtility.FromJson<Graph>(jsonString);
     }
+
+    public void LoadDialogueFromTextAsset(TextAsset JsonAsset)
+    {
+        if (JsonAsset == null) return;
+        graph = JsonManager.JsonToDialogueData(JsonAsset.text);
+    }
 }

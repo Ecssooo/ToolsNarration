@@ -14,9 +14,15 @@ public class VisualisedDialogue : MonoBehaviour
 
     public void StartDialogue()
     {
-        currentNodeId = DialogueManager.Instance.Graph.StartNodeId;
+        StartDialogue(DialogueManager.Instance.Graph.StartNodeId);
+    }
+
+    public void StartDialogue(string startNodeId)
+    {
+        currentNodeId = startNodeId;
         UpdateUI(currentNodeId);
     }
+
 
     private void UpdateUI(string nodeId)
     {
