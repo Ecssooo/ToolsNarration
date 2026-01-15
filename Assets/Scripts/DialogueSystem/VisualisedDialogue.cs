@@ -13,11 +13,7 @@ public class VisualisedDialogue : MonoBehaviour
     [DialogueCondition, SerializeField] private bool isTestCondition;
 
     private string currentNodeId;
-
-    public void StartDialogue()
-    {
-        StartDialogue(DialogueManager.Instance.Graph.StartNodeId);
-    }
+    
 
     public void StartDialogue(string startNodeId)
     {
