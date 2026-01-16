@@ -1,5 +1,16 @@
 {
     "StartNodeId": "6b0faa66a21f465a9cdce5c5bf550480",
+    "Events": [
+        "ChangeBGColor",
+        "CameraShake",
+        "b"
+    ],
+    "Conditions": [
+        "Checktest",
+        "IsPlayerRich",
+        "Test",
+        "a"
+    ],
     "Nodes": [
         {
             "NodeId": "6b0faa66a21f465a9cdce5c5bf550480",
@@ -11,7 +22,7 @@
             "Choices": [
                 {
                     "ChoiceId": "426cdf0e3c8f4181a2b4324af47180a6",
-                    "ChoiceText": "1A",
+                    "ChoiceText": "1Aeeeee",
                     "Events": [
                         {
                             "Id": "ChangeBGColor",
@@ -36,6 +47,13 @@
                     "AvailabilityConditions": [
                         "Checktest"
                     ]
+                },
+                {
+                    "ChoiceId": "44ab72f1906c40f09bf1ddd69691c86d",
+                    "ChoiceText": "New choice",
+                    "Events": [],
+                    "NextNodeId": "6b0faa66a21f465a9cdce5c5bf550480",
+                    "AvailabilityConditions": []
                 }
             ],
             "PosX": -20.11115264892578,

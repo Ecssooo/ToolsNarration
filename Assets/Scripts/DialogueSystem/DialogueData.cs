@@ -44,9 +44,3 @@ public class DialogueEvent
     public List<string> Params;
 }
 
-[Serializable]
-public class Condition
-{
-    public string Id;
-    public List<string> Params;
-}

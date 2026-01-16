@@ -15,7 +15,8 @@ public class Player : MonoBehaviour
     InputAction moveAction;
     InputAction interactAction;
 
-    bool hasInteractTarget;
+    NpcDialogueSelector currentTarget;
+    bool isInDialogue;
 
     void Awake()
     {
@@ -47,6 +48,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (isInDialogue) return;
+
         Vector2 input = moveAction.ReadValue<Vector2>();
         Vector3 dir = new Vector3(input.x, 0f, input.y);
         cc.Move(dir * speed * Time.deltaTime);
@@ -54,27 +57,46 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (!other.TryGetComponent<PNJ>(out _)) return;
+        if (!other.TryGetComponent<NpcDialogueSelector>(out var selector)) return;
 
-        hasInteractTarget = true;
-        Player_SetInteractPrompt(true);
+        currentTarget = selector;
+
+        if (!isInDialogue)
+            Player_SetInteractPrompt(true);
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (!other.TryGetComponent<PNJ>(out _)) return;
+        if (!other.TryGetComponent<NpcDialogueSelector>(out var selector)) return;
+        if (currentTarget != selector) return;
 
-        hasInteractTarget = false;
+        currentTarget = null;
+
         Player_SetInteractPrompt(false);
         Player_SetDialogue(false);
+        isInDialogue = false;
     }
 
     void OnInteract(InputAction.CallbackContext ctx)
     {
-        if (!hasInteractTarget) return;
+        if (isInDialogue)
+        {
+            Player_SetDialogue(false);
+            isInDialogue = false;
+
+            if (currentTarget != null)
+                Player_SetInteractPrompt(true);
+
+            return;
+        }
+
+        if (currentTarget == null) return;
 
         Player_SetInteractPrompt(false);
         Player_SetDialogue(true);
+        isInDialogue = true;
+
+        currentTarget.Interact();
     }
 
     void Player_SetInteractPrompt(bool show)

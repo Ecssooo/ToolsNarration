@@ -39,6 +39,8 @@ public class NpcDialogueSelector : MonoBehaviour
         public BoolCondition Condition;
         public FlagSet SetFlagOnPlay;
     }
+    
+    [SerializeField] private TextAsset dialogueDatabaseJson;
 
     [Header("Rules (first valid wins)")] 
     [SerializeField] private List<ConditionalStart> rules = new();
