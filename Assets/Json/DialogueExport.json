@@ -64,7 +64,9 @@
             "NodeType": 0,
             "SpeakerId": "NPC",
             "Text": [
-                "Une explosion retentit"
+                "Une explosion retentit",
+                "AAAA",
+                "BBBB"
             ],
             "Choices": [
                 {
