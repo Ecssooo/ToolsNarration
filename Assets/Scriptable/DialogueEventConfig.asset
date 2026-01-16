@@ -21,8 +21,24 @@ MonoBehaviour:
     typeName: TestAttributeEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
     methodName: CameraShake
+  - eventId: Lose
+    typeName: QuitApplication, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    methodName: QuitApp
+  - eventId: Invocation
+    typeName: MoveObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    methodName: StartMoving
+  - eventId: SetBoolState
+    typeName: Diogene, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    methodName: SetBoolState
+  - eventId: Raspoutine
+    typeName: Respoutine, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    methodName: UnlockRaspoutine
   conditionBindings:
   - eventId: Checktest
     typeName: VisualisedDialogue, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
     fieldName: isTestCondition
+  - eventId: Raspoutine
+    typeName: Respoutine, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    fieldName: isRaspoutine

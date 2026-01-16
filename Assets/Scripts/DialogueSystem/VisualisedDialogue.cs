@@ -102,6 +102,7 @@ public class VisualisedDialogue : MonoBehaviour
         if (texts.Count == 0) return;
 
         currentTextIndex++;
+        if (currentTextIndex >= texts.Count) return;
         dialogueText.text = texts[currentTextIndex];
         if (currentTextIndex >= texts.Count - 1)
         {

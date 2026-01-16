@@ -448,6 +448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 346154084}
   - component: {fileID: 346154086}
+  - component: {fileID: 346154087}
   - component: {fileID: 346154083}
   - component: {fileID: 346154082}
   - component: {fileID: 346154081}
@@ -563,27 +564,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 311625cd9c7aacc4cb5839074f0e5206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NpcDialogueSelector
-  dialogueDatabaseJson: {fileID: 4900000, guid: 2ec969714f1731a4faadce28f5043544, type: 3}
+  dialogueDatabaseJson: {fileID: 4900000, guid: 6bc6002d8b1bcb24f8c1e7e639c9b1ee, type: 3}
   rules:
-  - StartNodeId: c751bc453c5e493faf5d19b25a9d4514
+  - StartNodeId: 5098da3f0466401bb13ee888577e2f33
     Condition:
-      Key: 1
+      Key: 
       Expected: 0
-    SetFlagOnPlay:
-      Enabled: 1
-      Key: 1
-      Value: 1
-  - StartNodeId: 16cd86f28fd84361bc766dd517c10c5e
-    Condition:
-      Key: 1
-      Expected: 1
     SetFlagOnPlay:
       Enabled: 0
       Key: 
       Value: 0
-  defaultStartNodeId: c751bc453c5e493faf5d19b25a9d4514
+  defaultStartNodeId: 5098da3f0466401bb13ee888577e2f33
   stateProviderBehaviour: {fileID: 874260381}
   visualisedDialogue: {fileID: 1866834363}
+--- !u!114 &346154087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346154079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be81dd13c992fdb4f9269a2cf0133e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Respoutine
+  isRaspoutine: 0
 --- !u!1 &423399453
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,115 +619,278 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff920b53c31566499d659d2bf9a3e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
-  dialogueJsonFile: {fileID: 4900000, guid: 2ec969714f1731a4faadce28f5043544, type: 3}
+  dialogueJsonFile: {fileID: 4900000, guid: 6bc6002d8b1bcb24f8c1e7e639c9b1ee, type: 3}
   graph:
-    StartNodeId: 6b0faa66a21f465a9cdce5c5bf550480
+    StartNodeId: 5085e814fd98400983ee2e31e9d01c3e
     Nodes:
-    - NodeId: 6b0faa66a21f465a9cdce5c5bf550480
+    - NodeId: 5085e814fd98400983ee2e31e9d01c3e
       NodeType: 0
-      SpeakerId: narrateur
+      SpeakerId: Player
       Text:
-      - "il \xE9tait une fois un petit caillou"
+      - I was never close to my father
+      Choices: []
+    - NodeId: 7da67fa2a20440a4bb1d437f181b3f51
+      NodeType: 0
+      SpeakerId: Narrateur
+      Text:
+      - "*Une odeur pestif\xE9r\xE9 \xE9mane de l'individue se trouvant face a vous*"
+      - '*Dans sa demi jarre nu*'
+      - 
       Choices:
-      - ChoiceId: 426cdf0e3c8f4181a2b4324af47180a6
-        ChoiceText: 1A
+      - ChoiceId: 8b8ddc44e766469ab58f9c8f8bce8e48
+        ChoiceText: '[...]'
+        Events: []
+        NextNodeId: e9b8b2ff3d6c49ae90711146757cc0e3
+        AvailabilityConditions: []
+    - NodeId: e9b8b2ff3d6c49ae90711146757cc0e3
+      NodeType: 0
+      SpeakerId: "Diog\xE8ne"
+      Text:
+      - Mon bras droit est bien plus fort que mon bras gauche
+      Choices:
+      - ChoiceId: 45d64d275933487c8a27a2e6f15c8270
+        ChoiceText: '[Lui cracher dessus]'
+        Events: []
+        NextNodeId: 9635edbee4f84df1b24c48e55e721b54
+        AvailabilityConditions: []
+      - ChoiceId: 18a8dc4c99ea41a19897f5dd6708a184
+        ChoiceText: "Bonjour Grand Philosophe Diog\xE8ne, serriez vous o\xF9 se trouve
+          mon p\xE8re ?"
         Events:
-        - Id: ChangeBGColor
+        - Id: Raspoutine
           Params:
-          - blue
-        NextNodeId: c751bc453c5e493faf5d19b25a9d4514
+          - 
+        - Id: SetBoolState
+          Params:
+          - QuestGived
+        NextNodeId: 3066875b9d0646a283574708c0e2c516
         AvailabilityConditions: []
-      - ChoiceId: 29ec8c5afb974e5a9f53ad5df042efa4
-        ChoiceText: 1B
-        Events:
-        - Id: CameraShake
-          Params: []
-        NextNodeId: 16cd86f28fd84361bc766dd517c10c5e
+    - NodeId: 9635edbee4f84df1b24c48e55e721b54
+      NodeType: 0
+      SpeakerId: Narrateur
+      Text:
+      - "*Vous racler votre gorge et sorter un ENORME mollard qui vien se glisser
+        d\xE9licatement sur le visage de Diog\xE8ne.*"
+      Choices: []
+    - NodeId: 3066875b9d0646a283574708c0e2c516
+      NodeType: 0
+      SpeakerId: "Diog\xE8ne"
+      Text:
+      - "J'ai ma petite id\xE9e de l\xE0 o\xF9 il se trouve."
+      - Mais voyez vous j'ai bien mal au dos.
+      - Trouvez moi une personne capable de m'IMPOSER LES MAINS.
+      Choices: []
+    - NodeId: 5098da3f0466401bb13ee888577e2f33
+      NodeType: 0
+      SpeakerId: Narrateur
+      Text:
+      - "*vous vous trouvez face a un homme compl\xE8tement bourr\xE9*"
+      - "*Raspoutine se vomit dessus avant de vous fixer d'un regard intense et mena\xE7ant*"
+      Choices:
+      - ChoiceId: a66f807aaba74719b57a98005460cdde
+        ChoiceText: "[fix\xE9 le du m\xEAme regard]"
+        Events: []
+        NextNodeId: b3c8b27bd8ca443d96549642007a5249
         AvailabilityConditions:
-        - Checktest
-    - NodeId: c751bc453c5e493faf5d19b25a9d4514
+        - Raspoutine
+      - ChoiceId: 2e35fb9646334f0987a75059f4e1e994
+        ChoiceText: "[tabass\xE9 le vieux russe bourr\xE9]"
+        Events: []
+        NextNodeId: f1424237d25b41b68414f57848a7e4a3
+        AvailabilityConditions:
+        - Raspoutine
+    - NodeId: b3c8b27bd8ca443d96549642007a5249
       NodeType: 0
-      SpeakerId: NPC
+      SpeakerId: Narrateur
       Text:
-      - Une explosion retentit
+      - "*Raspoutine approche d\xE9licetement son visage du votre.*"
       Choices:
-      - ChoiceId: 0c6cad0b9b624974b01938c4e5ed9c9d
-        ChoiceText: 2A
+      - ChoiceId: 538d78b12a644c6d8cc3f24a1e93c729
+        ChoiceText: '[l''Embrasser]'
         Events: []
-        NextNodeId: c4278cb6b1194cbf91d2531766a03f6e
+        NextNodeId: c4ed328555604c7e921d9e1be2d998e5
         AvailabilityConditions: []
-    - NodeId: 16cd86f28fd84361bc766dd517c10c5e
+    - NodeId: f1424237d25b41b68414f57848a7e4a3
       NodeType: 0
-      SpeakerId: NPC
+      SpeakerId: Narrateur
       Text:
-      - "Rayan arrive nue a l'a\xE9roport"
+      - "*Raspoutine compl\xE8tement d\xE9chir\xE9 vous saute dessus*"
       Choices:
-      - ChoiceId: d82814e97cb94d86b832a8171d84edd8
-        ChoiceText: 3A
+      - ChoiceId: f28096453a864074b2f241eed85e0d75
+        ChoiceText: "[Vous mettre en position lat\xE9ral de s\xE9curit\xE9]"
         Events: []
-        NextNodeId: 9cd97fc70ab443bcb2e72baf067750c8
+        NextNodeId: 6e7b07c001b14fc081369f3fbfa8ef82
         AvailabilityConditions: []
-      - ChoiceId: a2ec0c3ce0b74122b9df4a288c5c2999
-        ChoiceText: 3B
+      - ChoiceId: d61fbd4534614a239dfdd94a762ac1f5
+        ChoiceText: "[Lui inj\xE9cter un dose de cianure mortelle pour un \xE9l\xE9phant]"
         Events: []
-        NextNodeId: 9a6f34c19a9b4133a31feeb2ef13aa98
+        NextNodeId: d95874cf4a31439e822b0a627edd0e7b
         AvailabilityConditions: []
-    - NodeId: c4278cb6b1194cbf91d2531766a03f6e
+      - ChoiceId: 2fc7d84a6d07483799656887d6456797
+        ChoiceText: '[Vous comportez comme un chien]'
+        Events: []
+        NextNodeId: 200eb77bfd324e11b9bd993b2eb3c44b
+        AvailabilityConditions: []
+    - NodeId: 6e7b07c001b14fc081369f3fbfa8ef82
       NodeType: 0
-      SpeakerId: NPC
+      SpeakerId: Narrateur
       Text:
-      - noooo
-      Choices: []
-    - NodeId: 9cd97fc70ab443bcb2e72baf067750c8
-      NodeType: 0
-      SpeakerId: NPC
-      Text:
-      - "il se fait gaull\xE9"
-      Choices: []
-    - NodeId: 9a6f34c19a9b4133a31feeb2ef13aa98
-      NodeType: 0
-      SpeakerId: NPC
-      Text:
-      - il explose
-      Choices: []
-    - NodeId: 6dbc7f8017d548fe9874283b2953337f
-      NodeType: 0
-      SpeakerId: Maxime
-      Text:
-      - il est beau
+      - '*De son regard vide Raspoutine abat sa puissance divine et mystique sur
+        vous.*'
+      - "*vous \xEAtes mort*"
       Choices:
-      - ChoiceId: 9d705ff354734b178c4a5a928c6cde45
-        ChoiceText: C1
-        Events: []
-        NextNodeId: 87d071c62e4c4075879fdee2be2342d4
+      - ChoiceId: 230515a4c2a548fb80cee142b6367a49
+        ChoiceText: '[...]'
+        Events:
+        - Id: Lose
+          Params:
+          - lose
+        NextNodeId: e2b94db846a64971aac674bde425046a
         AvailabilityConditions: []
-      - ChoiceId: f09c1b0df492487fa004687eb8394307
-        ChoiceText: D1
-        Events: []
-        NextNodeId: 352df9d71c434b5485e2add809549f3f
-        AvailabilityConditions: []
-    - NodeId: 87d071c62e4c4075879fdee2be2342d4
+    - NodeId: 200eb77bfd324e11b9bd993b2eb3c44b
       NodeType: 0
-      SpeakerId: NPC
+      SpeakerId: Narrateur
       Text:
-      - AAAA
+      - "*Diog\xE8ne vous rejoins, alert\xE9 par vos g\xE9missement*"
+      - "*vous \xEAtes d\xE9sormais en 2v1.*"
       Choices:
-      - ChoiceId: db7c402d453342b09acca739fe141d88
-        ChoiceText: C2
+      - ChoiceId: 175d7cb0f65740f1a5dcef855cb96d0c
+        ChoiceText: '[Le mordre]'
         Events: []
-        NextNodeId: 8dfce86a34cc4cdbb3b0fc6d2bad71b5
+        NextNodeId: 4b29623ff7554c089519b07fa79840ac
         AvailabilityConditions: []
-    - NodeId: 8dfce86a34cc4cdbb3b0fc6d2bad71b5
+      - ChoiceId: c4e64ab702174062928799991e50d3e9
+        ChoiceText: '[Sortir des flingues et lui tirer dessus]'
+        Events: []
+        NextNodeId: fe61dc2a85964c9aa68a35539042eab6
+        AvailabilityConditions: []
+    - NodeId: d95874cf4a31439e822b0a627edd0e7b
       NodeType: 0
-      SpeakerId: NPC
+      SpeakerId: Narrateur
       Text:
-      - CCCC
+      - '*il s''en branle*'
+      Choices:
+      - ChoiceId: b15d3a5780f9458390f70315ba1b29d3
+        ChoiceText: "[Sortir un glock \"t'aime le plomb j'esp\xE8re?\"]"
+        Events: []
+        NextNodeId: d31b87000f3a4556b01c7b0f55daf80b
+        AvailabilityConditions: []
+    - NodeId: e2b94db846a64971aac674bde425046a
+      NodeType: 0
+      SpeakerId: Narrateur
+      Text:
+      - '*Perdue*'
       Choices: []
-    - NodeId: 352df9d71c434b5485e2add809549f3f
+    - NodeId: 4b29623ff7554c089519b07fa79840ac
       NodeType: 0
-      SpeakerId: NPC
+      SpeakerId: Narrateur
       Text:
-      - BBBB
+      - "*Apr\xE8s un combat acharn\xE9 ayant dur\xE9e seulement 127 minutes, Raspoutine
+        s'\xE9croule au sol, MORT.*"
+      Choices:
+      - ChoiceId: cf78ff550f8146d3a32988d5c1656d72
+        ChoiceText: '[Lui couper les mains]'
+        Events:
+        - Id: SetBoolState
+          Params:
+          - retourD
+        NextNodeId: 4e4eea6ee78a4f718a3bb4db316bcaa7
+        AvailabilityConditions: []
+    - NodeId: fe61dc2a85964c9aa68a35539042eab6
+      NodeType: 0
+      SpeakerId: Narrateur
+      Text:
+      - "*Apr\xE8s avoir vid\xE9 l'\xE9quivalent du stock de munitions des Etats
+        Unis, le vieux russe bourr\xE9e tombe au sol.*"
+      Choices:
+      - ChoiceId: 00fcefd201c04d3fa625a2749ff98500
+        ChoiceText: '[Lui couper les mains]'
+        Events:
+        - Id: SetBoolState
+          Params:
+          - retourD
+        NextNodeId: 4e4eea6ee78a4f718a3bb4db316bcaa7
+        AvailabilityConditions: []
+    - NodeId: 4e4eea6ee78a4f718a3bb4db316bcaa7
+      NodeType: 0
+      SpeakerId: Narrateur
+      Text:
+      - '*Vous couper les mains de Raspoutine.*'
+      - "*Aller les offrir a Diog\xE8ne.*"
+      Choices: []
+    - NodeId: d31b87000f3a4556b01c7b0f55daf80b
+      NodeType: 0
+      SpeakerId: Narrateur
+      Text:
+      - "*vous lui tir\xE9 dessus durant approximativement 72 heure*"
+      - "*Raspoutine s'\xE9ffondre au sol.*"
+      Choices:
+      - ChoiceId: 7ce5a7d2ff984fc7b2c19b565ddaf4bd
+        ChoiceText: '[Lui couper les mains]'
+        Events:
+        - Id: SetBoolState
+          Params:
+          - retourD
+        NextNodeId: 4e4eea6ee78a4f718a3bb4db316bcaa7
+        AvailabilityConditions: []
+    - NodeId: c4ed328555604c7e921d9e1be2d998e5
+      NodeType: 0
+      SpeakerId: Narrateur
+      Text:
+      - '*Raspoutine vous impose les mains*'
+      Choices:
+      - ChoiceId: ecc7bf81f8a241fb93105641a784d5eb
+        ChoiceText: "[Vous \xEAtes mort]"
+        Events:
+        - Id: Lose
+          Params:
+          - lose
+        NextNodeId: fdda56406f6244229eedad6f2fecb1c5
+        AvailabilityConditions: []
+    - NodeId: fdda56406f6244229eedad6f2fecb1c5
+      NodeType: 0
+      SpeakerId: Narrateur
+      Text:
+      - Perdue
+      Choices: []
+    - NodeId: 5554df01d9ca42c4883978b942cbd6e3
+      NodeType: 0
+      SpeakerId: "Diog\xE8ne"
+      Text:
+      - '*Vas me cherche quelqu''un capable de m''IMPOSER LES MAINS*'
+      Choices: []
+    - NodeId: 5a7721f721dc47dab40dd1528e19fed4
+      NodeType: 0
+      SpeakerId: Narrateur
+      Text:
+      - "*Diog\xE8ne dors comme un gros clodo*"
+      Choices:
+      - ChoiceId: edab5161dc76437d94d4fcfc8704113b
+        ChoiceText: '[Lui jeter les mains a la gueul]'
+        Events:
+        - Id: Invocation
+          Params:
+          - francko
+        NextNodeId: 92baf23184a44d0c96079e1233cff45a
+        AvailabilityConditions: []
+    - NodeId: 92baf23184a44d0c96079e1233cff45a
+      NodeType: 0
+      SpeakerId: Narrateur
+      Text:
+      - "*Diog\xE8ne saisit les mains pourrie de Raspoutine et se les IMPOSE.*"
+      - "*Apr\xE8s de longue heure, une image atroce ancr\xE9 dans votre m\xE9moire
+        et 27 trauma Diog\xE8ne s'adresse a vous.*"
+      - "Merci a toi beau gosse, je vais faire venir ton p\xE8re."
+      - "*Diog\xE8ne se met a prier, d\xE9plume un poulet et court dans tout les
+        sens.*"
+      - "*Un \xEAtre divin fais son entr\xE9.*"
+      Choices: []
+    - NodeId: f6d76799cef04ccaa1354a7a6e4a3b6c
+      NodeType: 0
+      SpeakerId: Francko
+      Text:
+      - "Je suis l\xE0 mon fils"
+      - '[DLC a NSFW a venir]'
       Choices: []
 --- !u!4 &423399455
 Transform:
@@ -1336,7 +1505,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoolStateBlackboard
   entries:
-  - Key: 1
+  - Key: QuestGived
+    Value: 0
+  - Key: ImposerMain
     Value: 0
 --- !u!4 &874260382
 Transform:
@@ -1348,53 +1519,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.22661, y: 0, z: -0.14749}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &895968727
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 895968729}
-  - component: {fileID: 895968728}
-  m_Layer: 0
-  m_Name: TestAttributeEvent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &895968728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 895968727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e17c33a995b5b647af8b9f2231bddc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TestAttributeEvent
-  bgImage: {fileID: 1395427016}
-  mainCamera: {fileID: 737680075}
-  isTest: 0
---- !u!4 &895968729
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 895968727}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 739.23047, y: 0.00002, z: 4472.9253}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1768,6 +1892,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 995843268}
+  - component: {fileID: 995843269}
   - component: {fileID: 995843264}
   - component: {fileID: 995843267}
   - component: {fileID: 995843266}
@@ -1791,25 +1916,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 311625cd9c7aacc4cb5839074f0e5206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NpcDialogueSelector
-  dialogueDatabaseJson: {fileID: 4900000, guid: 2ec969714f1731a4faadce28f5043544, type: 3}
+  dialogueDatabaseJson: {fileID: 4900000, guid: 6bc6002d8b1bcb24f8c1e7e639c9b1ee, type: 3}
   rules:
-  - StartNodeId: c751bc453c5e493faf5d19b25a9d4514
+  - StartNodeId: 5a7721f721dc47dab40dd1528e19fed4
     Condition:
-      Key: 1
-      Expected: 0
-    SetFlagOnPlay:
-      Enabled: 1
-      Key: 1
-      Value: 1
-  - StartNodeId: 16cd86f28fd84361bc766dd517c10c5e
-    Condition:
-      Key: 1
+      Key: ImposerMain
       Expected: 1
     SetFlagOnPlay:
       Enabled: 0
       Key: 
       Value: 0
-  defaultStartNodeId: c751bc453c5e493faf5d19b25a9d4514
+  - StartNodeId: 5554df01d9ca42c4883978b942cbd6e3
+    Condition:
+      Key: QuestGived
+      Expected: 1
+    SetFlagOnPlay:
+      Enabled: 0
+      Key: 
+      Value: 0
+  - StartNodeId: 7da67fa2a20440a4bb1d437f181b3f51
+    Condition:
+      Key: 
+      Expected: 0
+    SetFlagOnPlay:
+      Enabled: 0
+      Key: 
+      Value: 0
+  defaultStartNodeId: 7da67fa2a20440a4bb1d437f181b3f51
   stateProviderBehaviour: {fileID: 874260381}
   visualisedDialogue: {fileID: 1866834363}
 --- !u!65 &995843265
@@ -1905,6 +2038,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
+--- !u!114 &995843269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995843263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d071e08affa51584d93b4f793157e098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Diogene
+  blackboard: {fileID: 874260381}
 --- !u!1 &1057672942
 GameObject:
   m_ObjectHideFlags: 0
@@ -2608,6 +2754,7 @@ GameObject:
   - component: {fileID: 1565678507}
   - component: {fileID: 1565678506}
   - component: {fileID: 1565678505}
+  - component: {fileID: 1565678510}
   - component: {fileID: 1565678504}
   - component: {fileID: 1565678503}
   - component: {fileID: 1565678509}
@@ -2660,7 +2807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a339c4f690beaa747af67d00fc1acff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  speed: 5
+  speed: 15
   pressECanvas: {fileID: 104256724}
   dialogueCanvas: {fileID: 512907384}
 --- !u!136 &1565678505
@@ -2785,6 +2932,18 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1565678510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565678502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e6cfc01d2362c84bb69f739597cb1ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuitApplication
 --- !u!1 &1566005702
 GameObject:
   m_ObjectHideFlags: 0
@@ -2818,25 +2977,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 311625cd9c7aacc4cb5839074f0e5206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NpcDialogueSelector
-  dialogueDatabaseJson: {fileID: 4900000, guid: 2ec969714f1731a4faadce28f5043544, type: 3}
+  dialogueDatabaseJson: {fileID: 4900000, guid: 6bc6002d8b1bcb24f8c1e7e639c9b1ee, type: 3}
   rules:
-  - StartNodeId: c751bc453c5e493faf5d19b25a9d4514
+  - StartNodeId: f6d76799cef04ccaa1354a7a6e4a3b6c
     Condition:
-      Key: 1
+      Key: 
       Expected: 0
-    SetFlagOnPlay:
-      Enabled: 1
-      Key: 1
-      Value: 1
-  - StartNodeId: 16cd86f28fd84361bc766dd517c10c5e
-    Condition:
-      Key: 1
-      Expected: 1
     SetFlagOnPlay:
       Enabled: 0
       Key: 
       Value: 0
-  defaultStartNodeId: c751bc453c5e493faf5d19b25a9d4514
+  defaultStartNodeId: f6d76799cef04ccaa1354a7a6e4a3b6c
   stateProviderBehaviour: {fileID: 874260381}
   visualisedDialogue: {fileID: 1866834363}
 --- !u!65 &1566005704
@@ -3255,7 +3406,6 @@ SceneRoots:
   - {fileID: 512907388}
   - {fileID: 1413050928}
   - {fileID: 1866834364}
-  - {fileID: 895968729}
   - {fileID: 969224052}
   - {fileID: 1565678508}
   - {fileID: 1901660036}
