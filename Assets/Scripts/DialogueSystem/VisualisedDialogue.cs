@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,16 +10,22 @@ public class VisualisedDialogue : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private RectTransform choicesContent;
     [SerializeField] private Button choiceButtonPrefab;
+    [SerializeField] private Button nextTextButton;
 
     [DialogueCondition, SerializeField] private bool isTestCondition;
 
+    private List<string> texts = new List<string>();
+    private int currentTextIndex = 0;
+    private Node currentNode;
+
     private string currentNodeId;
-    
+
 
     public void StartDialogue(string startNodeId)
     {
         currentNodeId = startNodeId;
         UpdateUI(currentNodeId);
+        nextTextButton.onClick.AddListener(NextText);
     }
 
 
@@ -26,21 +33,45 @@ public class VisualisedDialogue : MonoBehaviour
     {
         Node node = DialogueManager.Instance.GetNodeByID(nodeId);
         currentNodeId = node.NodeId;
+        currentNode = node;
 
         speakerText.text = node.SpeakerId;
 
         if (node.Text != null && node.Text.Count > 0)
-            dialogueText.text = string.Join("\n", node.Text);
+        {
+            texts = node.Text;
+            currentTextIndex = 0;
+            dialogueText.text = texts[0];
+        }
         else
+        {
             dialogueText.text = "";
 
+            ClearChoices();
+        }
+
+
+
+        if (texts.Count > 1)
+        {
+            nextTextButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            ShowChoices();
+        }
+    }
+
+    private void ShowChoices()
+    {
+        if (currentNode.Choices == null) return;
         ClearChoices();
 
-        if (node.Choices == null) return;
+        nextTextButton.gameObject.SetActive(false);
 
-        for (int i = 0; i < node.Choices.Count; i++)
+        for (int i = 0; i < currentNode.Choices.Count; i++)
         {
-            var choiceData = node.Choices[i];
+            var choiceData = currentNode.Choices[i];
             bool isAvailable = true;
             for (int j = 0; j < choiceData.AvailabilityConditions.Count; j++)
             {
@@ -64,6 +95,20 @@ public class VisualisedDialogue : MonoBehaviour
                 OnChoiceSelected(nextId);
             });
         }
+    }
+
+    public void NextText()
+    {
+        if (texts.Count == 0) return;
+
+        currentTextIndex++;
+        dialogueText.text = texts[currentTextIndex];
+        if (currentTextIndex >= texts.Count - 1)
+        {
+            nextTextButton.gameObject.SetActive(false);
+            ShowChoices();
+        }
+
     }
 
     private void OnChoiceSelected(string nextNodeId)
