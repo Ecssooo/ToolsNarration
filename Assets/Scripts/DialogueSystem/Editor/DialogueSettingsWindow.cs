@@ -16,7 +16,7 @@ public class DialogueSettingsWindow : EditorWindow
     private string[] jsonEventIds = Array.Empty<string>();
     private string[] jsonConditionIds = Array.Empty<string>();
 
-    [MenuItem("Window/Dialogue Settings")]
+    [MenuItem("Dialogue/Dialogue Settings")]
     public static void ShowWindow()
     {
         EditorWindow.GetWindow(typeof(DialogueSettingsWindow));
