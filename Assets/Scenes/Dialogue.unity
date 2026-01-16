@@ -450,7 +450,6 @@ GameObject:
   - component: {fileID: 346154083}
   - component: {fileID: 346154082}
   - component: {fileID: 346154081}
-  - component: {fileID: 346154085}
   - component: {fileID: 346154086}
   m_Layer: 0
   m_Name: PNJ
@@ -552,18 +551,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &346154085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346154079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fa475a49b0c8404eb1b2cc838daa367, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PNJ
 --- !u!114 &346154086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,15 +563,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 311625cd9c7aacc4cb5839074f0e5206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NpcDialogueSelector
+  dialogueDatabaseJson: {fileID: 4900000, guid: 2ec969714f1731a4faadce28f5043544, type: 3}
   rules:
   - StartNodeId: c751bc453c5e493faf5d19b25a9d4514
     Condition:
       Key: 1
       Expected: 0
     SetFlagOnPlay:
-      Enabled: 1
-      Key: 1
-      Value: 1
+      Enabled: 0
+      Key: 
+      Value: 0
   - StartNodeId: 16cd86f28fd84361bc766dd517c10c5e
     Condition:
       Key: 1
@@ -1196,7 +1184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoolStateBlackboard
   entries:
   - Key: 1
-    Value: 1
+    Value: 0
 --- !u!4 &874260382
 Transform:
   m_ObjectHideFlags: 0

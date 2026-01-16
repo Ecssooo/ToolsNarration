@@ -60,7 +60,9 @@ public class Player : MonoBehaviour
         if (!other.TryGetComponent<NpcDialogueSelector>(out var selector)) return;
 
         currentTarget = selector;
-        Player_SetInteractPrompt(true);
+
+        if (!isInDialogue)
+            Player_SetInteractPrompt(true);
     }
 
     void OnTriggerExit(Collider other)
@@ -77,6 +79,17 @@ public class Player : MonoBehaviour
 
     void OnInteract(InputAction.CallbackContext ctx)
     {
+        if (isInDialogue)
+        {
+            Player_SetDialogue(false);
+            isInDialogue = false;
+
+            if (currentTarget != null)
+                Player_SetInteractPrompt(true);
+
+            return;
+        }
+
         if (currentTarget == null) return;
 
         Player_SetInteractPrompt(false);
